@@ -45,6 +45,7 @@ class Producer04 implements Runnable {
         this.notFull = notFull;
         this.full = full;
         this.name = name;
+        
     }
 
     @Override
