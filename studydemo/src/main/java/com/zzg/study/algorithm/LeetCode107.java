@@ -7,7 +7,7 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
- * 二叉树的层次遍历
+ * 二叉树的层次遍历 广度优先算法
  */
 public class LeetCode107 {
 
