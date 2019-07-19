@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 /**
  * Created user :zhangzhigang5
  * Created date :2018/9/25
- * Created desc :
+ * Created desc :算法
  * Created whit :@jdpay
  * Created tips :details determine success or failure
  */
@@ -20,4 +20,5 @@ public interface DefaultInterface {
     static void defaultStaticMethod() {
         log.info("DefaultInterface#defaultStaticMethod");
     }
+
 }
