@@ -1,5 +1,8 @@
 package com.zzg.study.algorithm;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * 101. 对称二叉树
  *
@@ -29,6 +32,12 @@ public class LeetCode101 {
         return isSymmetric(root.left, root.right);
     }
 
+    /**
+     * 1.用递归的方式
+     * @param t1
+     * @param t2
+     * @return
+     */
     public boolean isSymmetric(TreeNode t1, TreeNode t2) {
         if ((t1 != null && t2 == null) || (t1 == null && t2 != null)) {
             return false;
@@ -40,5 +49,38 @@ public class LeetCode101 {
             return isSymmetric(t1.left, t2.right) && isSymmetric(t1.right, t2.left);
         }
         return false;
+    }
+
+    /**
+     * 2.用队列广度优先迭代
+     * @param root
+     * @return
+     */
+    public boolean isSymmetric2(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        Queue<TreeNode> queue =new LinkedList<>();
+        queue.offer(root.left);
+        queue.offer(root.right);
+        while (!queue.isEmpty()){
+            TreeNode t1=queue.poll();
+            TreeNode t2=queue.poll();
+            if ((t1 != null && t2 == null) || (t1 == null && t2 != null)) {
+                return false;
+            }
+            if (t1 == null && t2 == null) {
+                continue;
+            }
+            if (t1.val == t2.val) {
+                queue.offer(t1.left);
+                queue.offer(t2.right);
+                queue.offer(t1.right);
+                queue.offer(t2.left);
+            }else {
+                return false;
+            }
+        }
+        return true;
     }
 }
