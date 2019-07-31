@@ -14,18 +14,18 @@ public class LeetCode107 {
 
     public static void main(String[] args) {
 
-        TreeNode root0 = new TreeNode(0);
-        TreeNode node1 = new TreeNode(1);
-        root0.setLeft(node1);
-        TreeNode node2 = new TreeNode(2);
-        root0.setRight(node2);
-
-        TreeNode node3 = new TreeNode(3);
-        node1.setLeft(node3);
-        TreeNode node4 = new TreeNode(4);
-        node1.setRight(node4);
-        List<List<Integer>> list = new LeetCode107().levelOrderBottom(root0);
-        System.out.printf("" + list);
+//        TreeNode root0 = new TreeNode(0);
+//        TreeNode node1 = new TreeNode(1);
+//        root0.setLeft(node1);
+//        TreeNode node2 = new TreeNode(2);
+//        root0.setRight(node2);
+//
+//        TreeNode node3 = new TreeNode(3);
+//        node1.setLeft(node3);
+//        TreeNode node4 = new TreeNode(4);
+//        node1.setRight(node4);
+//        List<List<Integer>> list = new LeetCode107().levelOrderBottom(root0);
+//        System.out.printf("" + list);
 
     }
 
@@ -63,36 +63,6 @@ public class LeetCode107 {
 
 }
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
 
-    TreeNode(int x) {
-        val = x;
-    }
 
-    public int getVal() {
-        return val;
-    }
 
-    public void setVal(int val) {
-        this.val = val;
-    }
-
-    public TreeNode getLeft() {
-        return left;
-    }
-
-    public void setLeft(TreeNode left) {
-        this.left = left;
-    }
-
-    public TreeNode getRight() {
-        return right;
-    }
-
-    public void setRight(TreeNode right) {
-        this.right = right;
-    }
-}
