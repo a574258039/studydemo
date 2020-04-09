@@ -26,7 +26,7 @@ public class LeetCode191 {
     }
 
     public static void main(String[] args) {
-        int result=new LeetCode191().hammingWeight(0b11);
-        System.out.printf(""+result);
+        int result = new LeetCode191().hammingWeight(0b11);
+        System.out.printf("" + result);
     }
 }

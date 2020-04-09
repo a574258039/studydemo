@@ -30,21 +30,21 @@ import java.util.Stack;
 public class LeetCode102 {
     public static void main(String[] args) {
 
-        TreeNode treeNode=new TreeNode(3);
-        TreeNode treeNode1=new TreeNode(9);
-        TreeNode treeNode12=new TreeNode(20);
-        treeNode.left=treeNode1;
-        treeNode.right=treeNode12;
-        treeNode1.left=null;
-        treeNode1.right=null;
+        TreeNode treeNode = new TreeNode(3);
+        TreeNode treeNode1 = new TreeNode(9);
+        TreeNode treeNode12 = new TreeNode(20);
+        treeNode.left = treeNode1;
+        treeNode.right = treeNode12;
+        treeNode1.left = null;
+        treeNode1.right = null;
 
-        TreeNode treeNode21=new TreeNode(5);
-        TreeNode treeNode22=new TreeNode(7);
-        treeNode12.left=treeNode21;
-        treeNode12.right=treeNode22;
+        TreeNode treeNode21 = new TreeNode(5);
+        TreeNode treeNode22 = new TreeNode(7);
+        treeNode12.left = treeNode21;
+        treeNode12.right = treeNode22;
 
-        List list=new LeetCode102().levelOrder(treeNode);
-        System.out.printf(""+list);
+        List list = new LeetCode102().levelOrder(treeNode);
+        System.out.printf("" + list);
 
     }
 
@@ -75,6 +75,7 @@ public class LeetCode102 {
         }
         return result;
     }
+
     static class TreeNode {
         int val;
         TreeNode left;

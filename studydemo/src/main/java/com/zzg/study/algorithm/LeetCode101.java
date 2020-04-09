@@ -5,23 +5,23 @@ import java.util.Queue;
 
 /**
  * 101. 对称二叉树
- *
+ * <p>
  * 给定一个二叉树，检查它是否是镜像对称的。
- *
+ * <p>
  * 例如，二叉树 [1,2,2,3,4,4,3] 是对称的。
- *
- *     1
- *    / \
- *   2   2
- *  / \ / \
+ * <p>
+ * 1
+ * / \
+ * 2   2
+ * / \ / \
  * 3  4 4  3
  * 但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的:
- *
- *     1
- *    / \
- *   2   2
- *    \   \
- *    3    3
+ * <p>
+ * 1
+ * / \
+ * 2   2
+ * \   \
+ * 3    3
  */
 public class LeetCode101 {
 
@@ -34,6 +34,7 @@ public class LeetCode101 {
 
     /**
      * 1.用递归的方式
+     *
      * @param t1
      * @param t2
      * @return
@@ -53,6 +54,7 @@ public class LeetCode101 {
 
     /**
      * 2.用队列广度优先迭代
+     *
      * @param root
      * @return
      */
@@ -60,12 +62,12 @@ public class LeetCode101 {
         if (root == null) {
             return true;
         }
-        Queue<TreeNode> queue =new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root.left);
         queue.offer(root.right);
-        while (!queue.isEmpty()){
-            TreeNode t1=queue.poll();
-            TreeNode t2=queue.poll();
+        while (!queue.isEmpty()) {
+            TreeNode t1 = queue.poll();
+            TreeNode t2 = queue.poll();
             if ((t1 != null && t2 == null) || (t1 == null && t2 != null)) {
                 return false;
             }
@@ -77,7 +79,7 @@ public class LeetCode101 {
                 queue.offer(t2.right);
                 queue.offer(t1.right);
                 queue.offer(t2.left);
-            }else {
+            } else {
                 return false;
             }
         }

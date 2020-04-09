@@ -26,12 +26,11 @@ import java.util.Stack;
 public class LeetCode155 {
 
     public static void main(String[] args) {
-        MinStack t=new MinStack();
+        MinStack t = new MinStack();
         t.push(2147483647);
         t.push(-2147483648);
-        System.out.printf(""+t);
+        System.out.printf("" + t);
     }
-
 
 
 }
@@ -49,11 +48,11 @@ class MinStack {
     }
 
     public void push(int x) {
-        stack.push(minStack.isEmpty() || minStack.peek() >= x  ? minStack.push(x) : x);
+        stack.push(minStack.isEmpty() || minStack.peek() >= x ? minStack.push(x) : x);
     }
 
     public void pop() {
-        if (!minStack.isEmpty()&& stack.pop() .intValue()== minStack.peek().intValue() ) {
+        if (!minStack.isEmpty() && stack.pop().intValue() == minStack.peek().intValue()) {
             minStack.pop();
         }
     }
@@ -62,7 +61,7 @@ class MinStack {
 //        if (!minStack.isEmpty()) {
 //            return stack.peek() - minStack.peek() == 0 ? minStack.pop() : stack.pop();
 //        }
-        return minStack.isEmpty()?-1:stack.peek();
+        return minStack.isEmpty() ? -1 : stack.peek();
     }
 
     public int getMin() {
@@ -77,13 +76,16 @@ class MinStack2 {
 
     private int min = Integer.MAX_VALUE;
     private Stack<Integer> stack;
-    /** initialize your data structure here. */
+
+    /**
+     * initialize your data structure here.
+     */
     public MinStack2() {
         stack = new Stack<>();
     }
 
     public void push(int x) {
-        if(min >= x){
+        if (min >= x) {
             stack.push(min);
             min = x;
         }
@@ -91,7 +93,7 @@ class MinStack2 {
     }
 
     public void pop() {
-        if(stack.pop() == min){
+        if (stack.pop() == min) {
             min = stack.pop();
         }
     }

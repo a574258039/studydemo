@@ -41,11 +41,11 @@ public class LeetCode020 {
         if (s == null || "".equals(s)) {
             return true;
         }
-        Map<Character,Character> type= new HashMap();
-        type.put('(',')');
-        type.put('{','}');
-        type.put('[',']');
-        char[] chars=s.toCharArray();
+        Map<Character, Character> type = new HashMap();
+        type.put('(', ')');
+        type.put('{', '}');
+        type.put('[', ']');
+        char[] chars = s.toCharArray();
         Stack<Character> characters = new Stack<>();
         for (int i = 0; i < chars.length; i++) {
             if (characters.isEmpty()) {
