@@ -27,9 +27,12 @@ public class Leetcode142 {
 
     }
 
-
+    /**
+     * 判断入口
+     * @param head
+     * @return
+     */
     public ListNode detectCycle(ListNode head) {
-
 
         ListNode node = getCycleNode(head);
         if (node == null) {
@@ -42,7 +45,11 @@ public class Leetcode142 {
         return node;
     }
 
-
+    /**
+     * 找相遇点
+     * @param head
+     * @return
+     */
     public ListNode getCycleNode(ListNode head) {
         if (head == null || head.next == null) {
             return null;
@@ -56,6 +63,7 @@ public class Leetcode142 {
             slow = slow.next;
             fast = fast.next.next;
         }
+        //return slow.next;
         return slow;
     }
 
