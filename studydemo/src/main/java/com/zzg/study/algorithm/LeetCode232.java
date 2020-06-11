@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Stack;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -35,43 +36,46 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class LeetCode232 {
 
-    public static void main(String[] args) {
-//        Map<Integer, AtomicInteger> symbolCounter = new HashMap<>();
-//
-//        symbolCounter.put(0,new AtomicInteger());
-//        for(int i=0;i<100;i++){
-//            symbolCounter.get(0).incrementAndGet();
-//        }
-//        symbolCounter.get(0).decrementAndGet();
-//        System.out.printf(""+symbolCounter);
-//
-//
-//
-//        LinkedBlockingQueue<String> String=new LinkedBlockingQueue<String>();
-//        String.add("1");
-//        String.add("2");
-//        String.add("3");
-//        String.add("4");
-////
-////        LinkedBlockingQueue<String> String2=new LinkedBlockingQueue<String>();
-////        String.drainTo(String2,1);
-////        String.drainTo(String2,2);
-//
-//
-//
-//
-//        Optional<String> res=String.stream().filter(key->key.equals("3")).findFirst();
-//        Optional<String> res2=String.stream().filter(key->key.equals("10")).findAny();
-//
-//        System.out.printf(""+res);
-
-//        LinkedList<String> list=new LinkedList<>();
-//        list.forEach(key-> System.out.printf(""+key));
-
-        int status = -1 << 2;
-        System.out.printf("" + status);
 
 
+    Stack<Integer> in =null;
+    Stack<Integer> out =null;
+
+    /** Initialize your data structure here. */
+    public LeetCode232() {
+        in =new Stack<>();
+        out =new Stack<>();
     }
+
+    /** Push element x to the back of queue. */
+    public void push(int x) {
+        in.push(x);
+    }
+
+    /** Removes the element from in front of queue and returns that element. */
+    public int pop() {
+        if(out.isEmpty()){
+            while(!in.isEmpty()){
+                out.push(in.pop());
+            }
+        }
+        return out.pop();
+    }
+
+    /** Get the front element. */
+    public int peek() {
+        if(out.isEmpty()){
+            while(!in.isEmpty()){
+                out.push(in.pop());
+            }
+        }
+        return out.peek();
+    }
+
+    /** Returns whether the queue is empty. */
+    public boolean empty() {
+        return in.isEmpty()&&out.isEmpty();
+    }
+
 
 }

@@ -10,15 +10,15 @@ import java.util.logging.Logger;
  * Created tips :details determine success or failure
  */
 public class ProducerCustomer03 {
-    public static int MAX=10;
-    public static int size=0;
+    public static int MAX = 10;
+    public static int size = 0;
 
     public static void main(String[] args) {
-        Object object=new Object();
-        Thread t=new Thread(new Producer03("P1",object));
-        Thread t4=new Thread(new Producer03("P3",object));
-        Thread t3=new Thread(new Producer03("P2",object));
-        Thread t2=new Thread(new Customer03("C1",object));
+        Object object = new Object();
+        Thread t = new Thread(new Producer03("P1", object));
+        Thread t4 = new Thread(new Producer03("P3", object));
+        Thread t3 = new Thread(new Producer03("P2", object));
+        Thread t2 = new Thread(new Customer03("C1", object));
         t.start();
         t2.start();
         t3.start();
@@ -28,10 +28,10 @@ public class ProducerCustomer03 {
 
 }
 
-class Producer03 implements Runnable{
+class Producer03 implements Runnable {
     Logger log = Logger.getLogger("Producer");
-    private String name=null;
-    private Object lock=null;
+    private String name = null;
+    private Object lock = null;
 
 
     public Producer03(String name, Object lock) {
@@ -49,7 +49,7 @@ class Producer03 implements Runnable{
                     lock.wait();
                 }
                 ProducerCustomer03.size++;
-                log.info(name+"生产了1个，剩下" + ProducerCustomer03.size + "个");
+                log.info(name + "生产了1个，剩下" + ProducerCustomer03.size + "个");
                 log.notifyAll();
             } catch (Exception e) {
 
@@ -59,12 +59,12 @@ class Producer03 implements Runnable{
     }
 }
 
-class Customer03 implements Runnable{
+class Customer03 implements Runnable {
 
     Logger log = Logger.getLogger("Customer03");
 
-    private String name=null;
-    private Object lock=null;
+    private String name = null;
+    private Object lock = null;
 
     public Customer03(String name, Object lock) {
         this.name = name;
@@ -73,16 +73,17 @@ class Customer03 implements Runnable{
 
     @Override
     public void run() {
-        while(true){
-            try{
+        while (true) {
+            try {
                 Thread.sleep(1000);
-                while(ProducerCustomer03.size<=0){
+                while (ProducerCustomer03.size <= 0) {
                     lock.wait();
                 }
                 ProducerCustomer03.size--;
-                log.info(name+"消费了1个，剩下" + ProducerCustomer03.size + "个");
+                log.info(name + "消费了1个，剩下" + ProducerCustomer03.size + "个");
                 log.notifyAll();
-            }catch (Exception e){}
+            } catch (Exception e) {
+            }
         }
     }
 }

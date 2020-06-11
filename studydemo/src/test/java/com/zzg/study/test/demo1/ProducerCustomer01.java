@@ -11,17 +11,17 @@ import java.util.logging.Logger;
  * Created tips :details determine success or failure
  */
 public class ProducerCustomer01 {
-    public static int capacity= 0;
-    public static int size= 10;
+    public static int capacity = 0;
+    public static int size = 10;
 
     public static void main(String[] args) {
 
-        Object lock=new Object();
+        Object lock = new Object();
 
-        Thread producer=new Thread(new Producer(lock,"P1"));
-        Thread producer2=new Thread(new Producer(lock,"P2"));
-        Thread customer=new Thread(new Customer(lock,"c1"));
-        Thread customer2=new Thread(new Customer(lock,"c2"));
+        Thread producer = new Thread(new Producer(lock, "P1"));
+        Thread producer2 = new Thread(new Producer(lock, "P2"));
+        Thread customer = new Thread(new Customer(lock, "c1"));
+        Thread customer2 = new Thread(new Customer(lock, "c2"));
         producer.start();
         producer2.start();
         customer.start();
@@ -30,17 +30,18 @@ public class ProducerCustomer01 {
     }
 
 }
+
 /* 生产者 */
-class Producer implements Runnable{
+class Producer implements Runnable {
 
     Logger log = Logger.getLogger("Producer");
 
-    private String name=null;
-    private Object lock=null;
+    private String name = null;
+    private Object lock = null;
 
-    public Producer(Object lock,String name) {
-        this.lock=lock;
-        this.name=name;
+    public Producer(Object lock, String name) {
+        this.lock = lock;
+        this.name = name;
     }
 
     @Override
@@ -73,18 +74,20 @@ class Producer implements Runnable{
 
     }
 }
+
 /* 消费者 */
-class  Customer implements Runnable{
+class Customer implements Runnable {
 
     Logger log = Logger.getLogger("Customer");
 
-    private String name=null;
-    private Object lock=null;
+    private String name = null;
+    private Object lock = null;
 
-    public Customer(Object lock,String name) {
-        this.lock=lock;
-        this.name=name;
+    public Customer(Object lock, String name) {
+        this.lock = lock;
+        this.name = name;
     }
+
     @Override
     public void run() {
         try {

@@ -19,8 +19,8 @@ public class BlockQueueTest {
 
     Logger log = Logger.getLogger("BlockQueueTest");
 
-    private BlockingQueue<String> queue=new ArrayBlockingQueue<String>(10);
-    private static int i=0;
+    private BlockingQueue<String> queue = new ArrayBlockingQueue<String>(10);
+    private static int i = 0;
 
 
     @Test
@@ -44,14 +44,14 @@ public class BlockQueueTest {
             }
         });
         String c1s = "C1-";
-        Thread c1=new Thread(new Runnable() {
+        Thread c1 = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true){
+                while (true) {
                     try {
                         Thread.sleep(1000);
-                        String value=queue.take();
-                        log.info(c1s+"从队列获取到value="+value);
+                        String value = queue.take();
+                        log.info(c1s + "从队列获取到value=" + value);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -60,14 +60,14 @@ public class BlockQueueTest {
             }
         });
         String c2s = "C2-";
-        Thread c2=new Thread(new Runnable() {
+        Thread c2 = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true){
+                while (true) {
                     try {
                         Thread.sleep(1000);
-                        String value=queue.take();
-                        log.info(c2s+"从队列获取到value="+value);
+                        String value = queue.take();
+                        log.info(c2s + "从队列获取到value=" + value);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

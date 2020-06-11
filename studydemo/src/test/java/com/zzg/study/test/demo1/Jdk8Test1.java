@@ -24,7 +24,7 @@ public class Jdk8Test1 {
     Logger log = Logger.getLogger("Jdk8Test1");
 
     @Test
-    public void test(){
+    public void test() {
 //        Supplier<Person> t=Person::new;
 //
 //        Person person=t.get();
@@ -47,7 +47,6 @@ public class Jdk8Test1 {
 //            return s++==1;
 //        };
 //        log.info(predicate.test(2)+"---");
-
 
 
         //Collections.sort(list);
@@ -110,14 +109,14 @@ public class Jdk8Test1 {
 //        new DefaultInterface(){}.defaultMethod();
 
 
-        LambdaTest lt=(s1,s2)->s1+s2;
-
-
-        LambdaTest lt2=lt::sum;
-
-
-        int sum=lt2.sum(1,2);
-        log.info(""+sum);
+//        LambdaTest lt = (s1, s2) -> s1 + s2;
+//
+//
+//        LambdaTest lt2 = lt::sum;
+//
+//
+//        int sum = lt2.sum(1, 2);
+//        log.info("" + sum);
 
     }
 

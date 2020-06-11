@@ -11,14 +11,14 @@ import java.util.logging.Logger;
  */
 public class BlockQueue {
 
-    static Logger  log = Logger.getLogger("BlockQueue");
+    static Logger log = Logger.getLogger("BlockQueue");
     private Node head;
     private Node tail;
     private int size;
-    private int maxSize=10;
+    private int maxSize = 10;
 
     public static void main(String[] args) {
-        final BlockQueue blockQueue=new BlockQueue();
+        final BlockQueue blockQueue = new BlockQueue();
 
 //        blockQueue.put("1");
 //        blockQueue.put("2");
@@ -60,13 +60,13 @@ public class BlockQueue {
             @Override
             public void run() {
                 for (int i = 0; i < 100; i++) {
-                    String s= null;
+                    String s = null;
                     try {
                         s = blockQueue.get();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    log.info("--->"+s);
+                    log.info("--->" + s);
                 }
             }
         });
@@ -77,12 +77,11 @@ public class BlockQueue {
     }
 
 
-
     public void put(String value) throws InterruptedException {
 
         synchronized (this) {
             Thread.sleep(1000);
-            while(size>=maxSize){
+            while (size >= maxSize) {
                 this.wait();
             }
             size++;
@@ -96,33 +95,33 @@ public class BlockQueue {
                 node.prec = tail;
                 tail = node;
             }
-            log.info(value+"进入队列size="+size);
+            log.info(value + "进入队列size=" + size);
 
         }
     }
 
     public String get() throws InterruptedException {
         String value = null;
-            Thread.sleep(1000);
-            synchronized (this) {
+        Thread.sleep(1000);
+        synchronized (this) {
 
-                if (tail == null || size == 0) {
-                    this.wait();
-                }
-                if (tail == null || tail == head) {
-                    value = head.value;
-                    tail = head = null;
-                } else {
-                    value = tail.value;
-                    Node tmp = tail.prec;
-                    tmp.next = null;
-                    tail = tmp;
-                }
-
-                size--;
-                log.info(value+"出队列size="+size);
-                this.notifyAll();
+            if (tail == null || size == 0) {
+                this.wait();
             }
+            if (tail == null || tail == head) {
+                value = head.value;
+                tail = head = null;
+            } else {
+                value = tail.value;
+                Node tmp = tail.prec;
+                tmp.next = null;
+                tail = tmp;
+            }
+
+            size--;
+            log.info(value + "出队列size=" + size);
+            this.notifyAll();
+        }
         return value;
     }
 
@@ -133,7 +132,7 @@ public class BlockQueue {
         /* 上一个节点 */
         private Node prec;
         /* 值 */
-        private String  value;
+        private String value;
 
         public Node(String value) {
             this.value = value;

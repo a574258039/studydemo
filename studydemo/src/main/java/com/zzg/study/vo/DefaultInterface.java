@@ -21,4 +21,5 @@ public interface DefaultInterface {
         log.info("DefaultInterface#defaultStaticMethod");
     }
 
+
 }
